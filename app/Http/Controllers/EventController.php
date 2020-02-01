@@ -15,7 +15,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view("event.index");
+        $events = \DB::table('events')->select("id", "value")->get();
+//        $data = json_encode($events);
+        $data = $events;
+        return view('chart', ['data' => $data]);
     }
 
     /**
