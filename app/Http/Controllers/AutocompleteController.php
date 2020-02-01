@@ -34,4 +34,10 @@ class AutocompleteController extends Controller
         }
     }
 
+    public function getmac(Request $request) {
+        $contract_id = $request->get('contract_id');
+        $data = DB::table('contracts')->where('contract_id', $contract_id)->first();
+        echo $data->mac;
+    }
+
 }

@@ -26,5 +26,6 @@ Route::get('/contract/search', 'ContractController@autocomplete');
 
 Route::get('/search', 'AutocompleteController@index');
 Route::post('/search/fetch', 'AutocompleteController@fetch')->name('autocomplete.fetch');
+route::post('/search/getmac', 'AutocompleteController@getmac');
 
 Route::post('/contract/show', 'ContractController@show');

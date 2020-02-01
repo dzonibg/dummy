@@ -18,14 +18,19 @@
 <div class="container box">
     <h3 align="center">Ajax Autocomplete Textbox in Laravel using JQuery</h3><br />
 
-    <form method="POST" action="/contract/show">
+    <form class="form-inline" method="POST" action="/contract/show">
     <div class="form-group">
-        <input type="text" name="contract_id" id="country_name" class="form-control input-lg" placeholder="Enter Country Name" />
+        <input type="text" name="contract_id" id="country_name" autocomplete="off" class="form-control" placeholder="Contract ID" />
         <div id="countryList">
         </div>
     </div>
+        <div class="form-group">
+            <input type="text" name="mac" id="mac" autocomplete="off" class="form-control" placeholder="Mac address" />
+            <div id="macList">
+            </div>
+        </div>
         @csrf
-        <button type="submit">Go</button>
+        <button class="btn btn-primary" type="submit">Go</button>
     {{ csrf_field() }}
 </form>
 </div>
@@ -55,6 +60,20 @@
         $(document).on('click', 'li', function(){
             $('#country_name').val($(this).text());
             $('#countryList').fadeOut();
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url:"/search/getmac",
+                method:"POST",
+                data:{contract_id:$('#country_name').val(), _token:_token},
+                success:function (data) {
+                    $('#mac').val(data);
+
+                }
+            });
+        });
+
+        $('#country_name').select(function () {
+
         });
 
     });

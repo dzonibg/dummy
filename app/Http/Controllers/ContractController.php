@@ -51,6 +51,8 @@ class ContractController extends Controller
         echo '<br>';
         $contract = DB::table("contracts")->where("contract_id", $request->contract_id)->first();
         echo $contract->mac;
+        echo '<br>';
+        echo $contract->id;
     }
 
     /**
