@@ -18,12 +18,16 @@
 <div class="container box">
     <h3 align="center">Ajax Autocomplete Textbox in Laravel using JQuery</h3><br />
 
+    <form method="POST" action="/contract/show">
     <div class="form-group">
-        <input type="text" name="country_name" id="country_name" class="form-control input-lg" placeholder="Enter Country Name" />
+        <input type="text" name="contract_id" id="country_name" class="form-control input-lg" placeholder="Enter Country Name" />
         <div id="countryList">
         </div>
     </div>
+        @csrf
+        <button type="submit">Go</button>
     {{ csrf_field() }}
+</form>
 </div>
 </body>
 </html>

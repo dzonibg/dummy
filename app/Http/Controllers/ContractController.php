@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contract;
 use Illuminate\Http\Request;
+use DB;
 
 class ContractController extends Controller
 {
@@ -44,9 +45,12 @@ class ContractController extends Controller
      * @param  \App\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function show(Contract $contract)
+    public function show(Request $request)
     {
-        //
+        echo $request->contract_id;
+        echo '<br>';
+        $contract = DB::table("contracts")->where("contract_id", $request->contract_id)->first();
+        echo $contract->mac;
     }
 
     /**
