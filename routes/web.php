@@ -22,9 +22,7 @@ Route::resource('/event', 'EventController');
 Route::resource('/contract', 'ContractController');
 Route::get('/contract/search', 'ContractController@autocomplete');
 
-Route::get('search', 'SearchController@index')->name('search');
 
-Route::get('autocomplete', 'SearchController@autocomplete')->name('autocomplete');
-route::get('type', function () {
-    return view('type');
-});
+
+Route::get('/search', 'AutocompleteController@index');
+Route::post('/search/fetch', 'AutocompleteController@fetch')->name('autocomplete.fetch');
