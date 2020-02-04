@@ -3,14 +3,14 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
 <div class="container">
-<canvas id="myChart" width="1400" height="700"></canvas>
+<canvas id="myChart" width="600" height="500"></canvas>
 </div>
     <script>
     var ctx = document.getElementById('myChart');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: [ <?php foreach($data as $value) echo $value->id .', '; ?> ],
+            labels: [ <?php foreach($data as $value) echo '"' . explode(':', explode(' ',$value->time)[1])[0] .'H", '; ?> ],
             datasets: [{
                 label: 'VALUE',
                 data: [ <?php foreach($data as $value) echo $value->value .', '; ?> ] ,

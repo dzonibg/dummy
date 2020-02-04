@@ -26,6 +26,10 @@ Route::get('/contract/search', 'ContractController@autocomplete');
 
 Route::get('/search', 'AutocompleteController@index');
 Route::post('/search/fetch', 'AutocompleteController@fetch')->name('autocomplete.fetch');
+Route::post('/search/fetchmac', 'AutocompleteController@fetchContract')->name('autocomplete.fetchMac');
 route::post('/search/getmac', 'AutocompleteController@getmac');
+route::post('/search/getcontractid', 'AutocompleteController@getContract');
 
 Route::post('/contract/show', 'ContractController@show');
+route::get('/datepicker', 'EventController@datepicker');
+route::post('/viewdate', 'EventController@viewdate');

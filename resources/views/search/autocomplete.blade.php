@@ -26,8 +26,7 @@
     </div>
         <div class="form-group">
             <input type="text" name="mac" id="mac" autocomplete="off" class="form-control" placeholder="Mac address" />
-            <div id="macList">
-            </div>
+            <div id="macList"></div>
         </div>
         @csrf
         <button class="btn btn-primary" type="submit">Go</button>
@@ -38,8 +37,9 @@
 </html>
 
 <script>
+    //jquery start
     $(document).ready(function(){
-
+//jquery enter contract id
         $('#country_name').keyup(function(){
             var query = $(this).val();
             if(query != '')
@@ -57,7 +57,28 @@
             }
         });
 
-        $(document).on('click', 'li', function(){
+        //jquery enter mac
+
+        $('#mac').keyup(function(){
+            var query = $(this).val();
+            if(query != '')
+            {
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url:"{{ route('autocomplete.fetchMac') }}",
+                    method:"POST",
+                    data:{query:query, _token:_token},
+                    success:function(data){
+                        $('#macList').fadeIn();
+                        $('#macList').html(data);
+                    }
+                });
+            }
+        });
+
+
+//jquery click contract id
+        $(document).on('click', '#countryl', function(){
             $('#country_name').val($(this).text());
             $('#countryList').fadeOut();
             var _token = $('input[name="_token"]').val();
@@ -71,9 +92,20 @@
                 }
             });
         });
+//jquery click mac
+        $(document).on('click', '#macl', function(){
+            $('#mac').val($(this).text());
+            $('#macList').fadeOut();
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url:"/search/getcontractid",
+                method:"POST",
+                data:{mac:$('#mac').val(), _token:_token},
+                success:function (data) {
+                    $('#country_name').val(data);
 
-        $('#country_name').select(function () {
-
+                }
+            });
         });
 
     });

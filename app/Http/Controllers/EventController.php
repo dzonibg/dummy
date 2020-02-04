@@ -15,7 +15,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = \DB::table('events')->select("id", "value")->get();
+        $events = \DB::table('events')->select("id", "value", "time")->limit(24)->get();
 //        $data = json_encode($events);
         $data = $events;
         return view('chart', ['data' => $data]);
@@ -92,5 +92,16 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         //
+    }
+
+    public function datepicker() {
+        return view("datepicker");
+    }
+
+    public function viewdate(Request $request) {
+        $date = $request->get('date');
+        $startdate = explode(' - ', $date)[0];
+        $enddate = explode(' - ', $date)[1];
+        return view('viewdate', ['startdate' => $startdate, 'enddate' => $enddate]);
     }
 }
