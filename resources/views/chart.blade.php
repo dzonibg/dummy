@@ -2,9 +2,15 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
-<div class="container">
-<canvas id="myChart" width="600" height="500"></canvas>
+
+<div class="row">
+    <div class="col-sm-6">
+    <!-- <canvas id="myChart" width="600" height="500"></canvas> -->
+        <canvas id="myChart"></canvas>
+
+    </div>
 </div>
+
     <script>
     var ctx = document.getElementById('myChart');
     var myChart = new Chart(ctx, {
