@@ -11,6 +11,16 @@
             width:600px;
             margin:0 auto;
         }
+        .form-control {
+            border-radius: 25px;
+        }
+        .btn-primary {
+            border-radius: 25px;
+        }
+
+        .form-control:focus {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
