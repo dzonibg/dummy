@@ -21,6 +21,7 @@
         .form-control:focus {
             width: 100%;
         }
+        .form-inline .form-group { vertical-align: top; }
     </style>
 </head>
 <body>
